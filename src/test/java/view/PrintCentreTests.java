@@ -72,6 +72,12 @@ public class PrintCentreTests {
             Assertions.assertInstanceOf(String.class, printCentre.endProgramme());
         }
 
+        @Test
+        @DisplayName("Does it return a string? - wordsInChoice")
+        void doesItReturnAStringWordsInChoice() {
+            Assertions.assertInstanceOf(String.class, printCentre.wordsInChoice());
+        }
+
     }
 
     @Test
