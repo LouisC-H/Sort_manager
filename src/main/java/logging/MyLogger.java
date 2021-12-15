@@ -18,7 +18,7 @@ public class MyLogger {
             e.printStackTrace();
         }
         Handler consoleHandler = new ConsoleHandler();
-        consoleHandler.setLevel(Level.WARNING);
+        consoleHandler.setLevel(Level.SEVERE);
         logger.addHandler(consoleHandler);
     }
 
