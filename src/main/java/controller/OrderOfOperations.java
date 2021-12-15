@@ -1,6 +1,7 @@
 package controller;
 
 import logging.MyLogger;
+import model.ArrayGenerator;
 import view.PrintCentre;
 import view.ReadCentre;
 import controller.DataCentre;
@@ -12,6 +13,7 @@ public class OrderOfOperations {
     private PrintCentre printCentre = new PrintCentre();
     private ReadCentre readCentre = new ReadCentre();
     private DataCentre dataCentre = new DataCentre();
+    private ArrayGenerator arrayGenerator = new ArrayGenerator();
 
     public void coordinateOrderOfOperations(){
         MyLogger.setup();
@@ -41,8 +43,9 @@ public class OrderOfOperations {
         MyLogger.log(Level.CONFIG,"Asking the user whether or not they'd like to see the performance details");
         dataCentre.setQueryPerformance(readCentre.queryYesNo());
     }
-    private void fireUpModel(){
 
+    private void fireUpModel(){
+        dataCentre.setUnsortedArray(arrayGenerator.generateRandomArray(dataCentre.getArrayLength()));
     }
 
     private void coordinateModelReturnPhase(){
