@@ -73,21 +73,21 @@ public class ReadCentre {
         }
     }
 
-    public boolean queryPerformance(){
-        boolean displayPerformanceData;
+    public boolean queryYesNo(){
+        boolean yesOrNo;
         String userInput = scan.nextLine();
 
         userInput = userInput.toUpperCase(Locale.ROOT);
         if (userInput.equals("Y") || userInput.equals("YES")){
-            displayPerformanceData = true;
+            yesOrNo = true;
         } else if (userInput.equals("N")||userInput.equals("NO")) {
-            displayPerformanceData = false;
+            yesOrNo = false;
         } else {
-            printCentre.pushToConsole(printCentre.invalidComparePerformance());
-            displayPerformanceData = queryPerformance();
+            printCentre.pushToConsole(printCentre.invalidYesNo());
+            yesOrNo = queryYesNo();
         }
 
-        return displayPerformanceData;
+        return yesOrNo;
     }
 
     public ArrayList<Integer> spoofChooseAlgorithm(String spoofUserInput, Integer numAlgorithms){

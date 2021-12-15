@@ -35,12 +35,12 @@ public class PrintCentre {
         return "Sorry, I didn't get that, please try again. Input a single number between 1 and " + Integer.MAX_VALUE;
     }
 
-    public String inviteComparePerformance(){
+    public String invitePerformanceTest(){
         return "Would you like to test the speed of the algorithm(s) selected?\n" +
                 "Please answer with Y (yes) or N (no)";
     }
 
-    public String invalidComparePerformance(){
+    public String invalidYesNo(){
         return "Sorry, I didn't get that, please try again. Input Y (yes) or N (no)";
     }
 
