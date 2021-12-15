@@ -37,13 +37,13 @@ public class PrintCentreTests {
         @Test
         @DisplayName("Does it return a string? - inviteComparePerformance")
         void doesItReturnAStringInviteComparePerformance() {
-            Assertions.assertInstanceOf(String.class, printCentre.inviteComparePerformance());
+            Assertions.assertInstanceOf(String.class, printCentre.invitePerformanceTest());
         }
 
         @Test
         @DisplayName("Does it return a string? - invalidComparePerformance")
         void doesItReturnAStringInvalidComparePerformance() {
-            Assertions.assertInstanceOf(String.class, printCentre.invalidComparePerformance());
+            Assertions.assertInstanceOf(String.class, printCentre.invalidYesNo());
         }
 
         @Test
