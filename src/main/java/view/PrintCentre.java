@@ -1,11 +1,15 @@
 package view;
 
+import logging.MyLogger;
+
 import java.util.Arrays;
+import java.util.logging.Level;
 
 public class PrintCentre {
 
     // only exists to allow other functions to be tested
     public void pushToConsole(String toPrint){
+        MyLogger.log(Level.FINEST,"Printing message to console window: " + toPrint);
         System.out.println(toPrint);
     }
 
