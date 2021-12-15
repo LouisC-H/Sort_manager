@@ -11,17 +11,20 @@ public class PrintCentre {
 
     public String inviteAlgorithmChoice(){
         return "Which algorithm would you like to use? \n" +
-                "If you would like to compare more than one, please separate your choices with commas \n" +
+                "If you would like to compare more than one, please separate each choice with a comma \n" +
                 "1. Bubble Sort \n" +
                 "2. Merge Sort \n" +
                 "3. Binary Tree Sort \n" +
                 "[Press esc to quit at any time]";
     }
 
-    public String invalidAlgorithmChoice(Integer numAlgorithms){
-        return "Sorry, I didn't get that, please try again. Input a number between 1 and " + numAlgorithms.toString();
+    public String wordsInChoice(){
+        return "Sorry, I didn't get that, please try again. Don't use any extra characters";
     }
 
+    public String invalidAlgorithmChoice(Integer numAlgorithms){
+        return "Sorry, I didn't get that, please try again. Input only number between 1 and " + numAlgorithms.toString();
+    }
 
     public String inviteArrayLengthChoice(){
         return "How long an array would you like to sort? \n" +
@@ -29,7 +32,7 @@ public class PrintCentre {
     }
 
     public String invalidArrayLengthChoice(){
-        return "Sorry, I didn't get that, please try again. Input a number between 1 and 2,147,483,647";
+        return "Sorry, I didn't get that, please try again. Input a single number between 1 and " + Integer.MAX_VALUE;
     }
 
     public String inviteComparePerformance(){
