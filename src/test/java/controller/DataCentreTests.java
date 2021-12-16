@@ -18,7 +18,7 @@ public class DataCentreTests {
         @Test
         @DisplayName("Getter return type - numberOfImplementedAlgorithms")
         void getterReturnTypeNumberOfImplementedAlgorithms() {
-            Assertions.assertInstanceOf(Integer.class, dataCentre.getNumberOfImplementedAlgorithms());
+            Assertions.assertInstanceOf(Integer.class, dataCentre.getNumberOfAlgorithms());
         }
 
         @Test
@@ -80,7 +80,7 @@ public class DataCentreTests {
         @Test
         @DisplayName("Getter return value - numberOfImplementedAlgorithms")
         void getterReturnTypeNumberOfImplementedAlgorithms() {
-            Assertions.assertEquals(3, dataCentre.getNumberOfImplementedAlgorithms());
+            Assertions.assertEquals(3, dataCentre.getNumberOfAlgorithms());
         }
 
         @Test
@@ -126,9 +126,9 @@ public class DataCentreTests {
         @Test
         @DisplayName("Getter return value - timeTaken")
         void getterReturnTypeTimeTaken() {
-            Integer integer = 9873;
-            dataCentre.addToTimeTaken(integer);
-            Assertions.assertEquals(integer, dataCentre.getSingleTimeTaken(0));
+            Long time = 9873L;
+            dataCentre.addToTimeTaken(time);
+            Assertions.assertEquals(time, dataCentre.getSingleTimeTaken(0));
         }
 
         @Test

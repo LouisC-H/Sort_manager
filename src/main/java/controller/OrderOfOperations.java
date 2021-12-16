@@ -3,10 +3,9 @@ package controller;
 import logging.MyLogger;
 import model.ArrayGenerator;
 import model.Sortable;
-import model.SortableFactory;
+import model.SortableAlgorithmHub;
 import view.PrintCentre;
 import view.ReadCentre;
-import controller.DataCentre;
 
 import java.util.logging.Level;
 
@@ -32,7 +31,7 @@ public class OrderOfOperations {
         //Step 1: The user is presented with a number of sort algorithms to choose from
         printCentre.pushToConsole(printCentre.inviteAlgorithmChoice());
         MyLogger.log(Level.CONFIG,"Asking the user to choose their algorithms");
-        dataCentre.setAlgorithmList(readCentre.chooseAlgorithm(dataCentre.getNumberOfImplementedAlgorithms()));
+        dataCentre.setAlgorithmList(readCentre.chooseAlgorithm(dataCentre.getNumberOfAlgorithms()));
         //Step 2: The program will then ask for the length of an array again via the command line
         printCentre.pushToConsole(printCentre.inviteArrayLengthChoice());
         MyLogger.log(Level.CONFIG,"Asking the user to choose their array length");
@@ -53,7 +52,7 @@ public class OrderOfOperations {
         for (int i = 0; i < dataCentre.getNumberOfChosenAlgorithms(); i++) {
             // ...instantiate a sorting algorithm object ...
             Integer sortingAlgorithmNumber = dataCentre.getAlgorithmList().get(i);
-            Sortable sortingAlgorithm = SortableFactory.getSortingAlgorithm(sortingAlgorithmNumber);
+            Sortable sortingAlgorithm = SortableAlgorithmHub.getSortingAlgorithm(sortingAlgorithmNumber);
             // ... then use it to sort the array.
             dataCentre.setSortedArraysRow(i, sortingAlgorithm.returnSortedArray(dataCentre.getUnsortedArray()));
             dataCentre.addToTimeTaken(sortingAlgorithm.returnTimeTaken());

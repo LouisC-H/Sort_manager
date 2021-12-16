@@ -1,10 +1,12 @@
 package controller;
 
+import model.SortableAlgorithmHub;
+
 import java.util.ArrayList;
 
 public class DataCentre {
 
-    private  Integer numberOfImplementedAlgorithms = 3;
+    private  Integer numberOfAlgorithms;
 
     private boolean queryPerformance;
     private Integer arrayLength;
@@ -15,13 +17,17 @@ public class DataCentre {
     private ArrayList<Long> timeTaken = new ArrayList<>();
     private ArrayList<String> algorithmNames = new ArrayList<>();
 
-    public void initialiseSortedArrays(Integer rows,Integer columns) {
+    public DataCentre() {
+        this.numberOfAlgorithms = SortableAlgorithmHub.numberOfSortAlgorithms;
+    }
+
+    public void initialiseSortedArrays(Integer rows, Integer columns) {
         this.sortedArrays = new int[rows][columns];
     }
 
     //Getters
-    public Integer getNumberOfImplementedAlgorithms() {
-        return numberOfImplementedAlgorithms;
+    public Integer getNumberOfAlgorithms() {
+        return numberOfAlgorithms;
     }
 
     public Boolean isQueryPerformance() {
