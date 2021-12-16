@@ -12,7 +12,7 @@ public class DataCentre {
     private int[] unsortedArray;
     private int[][] sortedArrays;
     private ArrayList<Integer> algorithmList = new ArrayList<>();
-    private ArrayList<Integer> timeTaken = new ArrayList<>();
+    private ArrayList<Long> timeTaken = new ArrayList<>();
     private ArrayList<String> algorithmNames = new ArrayList<>();
 
     public void initialiseSortedArrays(Integer rows,Integer columns) {
@@ -48,7 +48,7 @@ public class DataCentre {
         return algorithmList;
     }
 
-    public Integer getSingleTimeTaken(int i) {
+    public Long getSingleTimeTaken(int i) {
         return timeTaken.get(i);
     }
 
@@ -78,7 +78,7 @@ public class DataCentre {
         this.numberOfChosenAlgorithms = algorithmList.size();
     }
 
-    public void addToTimeTaken(Integer timeTaken) {
+    public void addToTimeTaken(long timeTaken) {
         this.timeTaken.add(timeTaken);
     }
 

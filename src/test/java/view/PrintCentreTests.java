@@ -63,7 +63,8 @@ public class PrintCentreTests {
         @Test
         @DisplayName("Does it return a string? - returnTime")
         void doesItReturnAStringReturnTime() {
-            Assertions.assertInstanceOf(String.class, printCentre.returnTime(97384659));
+            Long timeInNanos = 97384659L;
+            Assertions.assertInstanceOf(String.class, printCentre.returnTime(timeInNanos));
         }
 
         @Test
@@ -113,6 +114,7 @@ public class PrintCentreTests {
     @DisplayName("Displaying time taken")
     void displayingTimeTaken() {
         String expectedString = "Time taken: 28975 ns";
-        Assertions.assertEquals(printCentre.returnTime(28975),expectedString);
+        Long timeInNanos = 28975L;
+        Assertions.assertEquals(printCentre.returnTime(timeInNanos),expectedString);
     }
 }

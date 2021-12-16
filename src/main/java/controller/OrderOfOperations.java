@@ -29,29 +29,26 @@ public class OrderOfOperations {
     }
 
     private void coordinateUserQueryPhase(){
-        //User is presented with a number of sort algorithms to choose from
+        //Step 1: The user is presented with a number of sort algorithms to choose from
         printCentre.pushToConsole(printCentre.inviteAlgorithmChoice());
-        //Decision is given via the command line
         MyLogger.log(Level.CONFIG,"Asking the user to choose their algorithms");
         dataCentre.setAlgorithmList(readCentre.chooseAlgorithm(dataCentre.getNumberOfImplementedAlgorithms()));
-        //The program will then ask for the length of an array again via the command line
+        //Step 2: The program will then ask for the length of an array again via the command line
         printCentre.pushToConsole(printCentre.inviteArrayLengthChoice());
-        //Decision is given via the command line
         MyLogger.log(Level.CONFIG,"Asking the user to choose their array length");
         dataCentre.setArrayLength(readCentre.chooseLength());
-        //Query if user wants to see the performance of algorithms
+        //Step 3: Query if user wants to see the performance of algorithms
         printCentre.pushToConsole(printCentre.invitePerformanceTest());
-        //Decision is given via the command line
         MyLogger.log(Level.CONFIG,"Asking the user whether or not they'd like to see the performance details");
         dataCentre.setQueryPerformance(readCentre.queryYesNo());
     }
 
     private void fireUpModel(){
-        // Generate random unsorted array
+        //Step 4: Generate random unsorted array
         MyLogger.log(Level.FINE,"Generating unsorted array");
         dataCentre.setUnsortedArray(arrayGenerator.generateRandomArray(dataCentre.getArrayLength()));
         dataCentre.initialiseSortedArrays(dataCentre.getNumberOfChosenAlgorithms(), dataCentre.getArrayLength());
-        // For each algorithm requested by the user...
+        //Step 5: For each algorithm requested by the user...
         MyLogger.log(Level.FINE,"Beginning to iterate over chosen sorting algorithms");
         for (int i = 0; i < dataCentre.getNumberOfChosenAlgorithms(); i++) {
             // ...instantiate a sorting algorithm object ...
@@ -66,29 +63,19 @@ public class OrderOfOperations {
     }
 
     private void coordinateModelReturnPhase(){
-        //Print the unsorted randomly generated array
+        //Step 6: Print outputs
         MyLogger.log(Level.FINE,"Showing unsorted array");
         printCentre.pushToConsole(printCentre.returnUnsorted(dataCentre.getUnsortedArray()));
-        /*
-        Begin output loop
-        Print the sort algorithm to be used
-        Print the sorted array after the algorithm has been executed
-        Decision point (Logic)
-        -> Print the time taken
-        -> Return to top of loop
-        -> End output loop
-         */
         for (int i = 0; i < dataCentre.getNumberOfChosenAlgorithms(); i++) {
             MyLogger.log(Level.FINE,"Showing array sorted using " + dataCentre.getSingleAlgorithmName(i));
             printCentre.pushToConsole(printCentre.returnSorted(dataCentre.getSingleAlgorithmName(i), dataCentre.getSortedArrayRow(i)));
             if (dataCentre.isQueryPerformance()){
                 MyLogger.log(Level.FINE,"Showing performance metric");
-                printCentre.returnTime(dataCentre.getSingleTimeTaken(i));
+                printCentre.pushToConsole(printCentre.returnTime(dataCentre.getSingleTimeTaken(i)));
             }
         }
-        // Announce end of programme
+        //Step 7: Announce end of program and inquire as to whether use wants to start again
         printCentre.pushToConsole(printCentre.endProgramme());
-        // inquire as to whether use wants to start again
         MyLogger.log(Level.CONFIG,"Asking the user whether they want to start again");
         if (readCentre.queryYesNo()){
             coordinateOrderOfOperations();
