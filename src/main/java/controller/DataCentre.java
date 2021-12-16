@@ -8,6 +8,7 @@ public class DataCentre {
 
     private boolean queryPerformance;
     private Integer arrayLength;
+    private Integer numberOfChosenAlgorithms;
     private int[] unsortedArray;
     private int[][] sortedArrays;
     private ArrayList<Integer> algorithmList = new ArrayList<>();
@@ -29,6 +30,10 @@ public class DataCentre {
 
     public Integer getArrayLength() {
         return arrayLength;
+    }
+
+    public Integer getNumberOfChosenAlgorithms() {
+        return numberOfChosenAlgorithms;
     }
 
     public int[] getUnsortedArray() {
@@ -70,6 +75,7 @@ public class DataCentre {
 
     public void setAlgorithmList(ArrayList<Integer> algorithmList) {
         this.algorithmList = algorithmList;
+        this.numberOfChosenAlgorithms = algorithmList.size();
     }
 
     public void addToTimeTaken(Integer timeTaken) {
