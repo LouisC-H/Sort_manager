@@ -39,4 +39,10 @@ public class BubbleSortTests {
         bubbleSort.returnSortedArray(exampleUnsortedArray);
         Assertions.assertTrue(bubbleSort.returnTimeTaken() >= 0);
     }
+
+    @Test
+    @DisplayName("Does it return a string for its name")
+    void doesItReturnAStringForItsName() {
+        Assertions.assertInstanceOf(String.class, bubbleSort.getAlgorithmName());
+    }
 }

@@ -1,5 +1,6 @@
 package model.sortingAlgorithms;
 
+import model.ArrayArrayListConversion;
 import model.Sortable;
 
 import java.time.LocalDateTime;
@@ -7,8 +8,8 @@ import java.util.ArrayList;
 
 public class BinaryTreeSort implements Sortable {
     private Node rootNode;
-    private int beginSort;
-    private int endSort;
+    private long beginSort;
+    private long endSort;
 
     private void constructTree(final int[] unsortedArray) {
         for (int i = 0; i < unsortedArray.length; i++) {
@@ -45,21 +46,20 @@ public class BinaryTreeSort implements Sortable {
     @Override
     public int[] returnSortedArray(int[] unsortedArray) {
 
+        this.beginSort = System.nanoTime();
         this.constructTree(unsortedArray);
 
-        this.beginSort = LocalDateTime.now().getNano();
         ArrayList<Integer> runningIntArrayList =  new ArrayList<>();
-
         runningIntArrayList = recurseThroughArray(rootNode, runningIntArrayList);
 
-        int[] runningIntArray = convertToIntArray(runningIntArrayList);
+        int[] runningIntArray = ArrayArrayListConversion.intArrayListToArray(runningIntArrayList);
 
-        this.endSort = LocalDateTime.now().getNano();
+        this.endSort = System.nanoTime();
         return runningIntArray;
     }
 
     @Override
-    public Integer returnTimeTaken() {
+    public long returnTimeTaken() {
         return this.endSort - this.beginSort;
     }
 
@@ -83,18 +83,6 @@ public class BinaryTreeSort implements Sortable {
         }
 
         return runningIntArray;
-    }
-
-    private int[] convertToIntArray(ArrayList<Integer> runningIntArray){
-        // create a new int array that's the same size as the  ArrayList
-        int arraySize = runningIntArray.size();
-        int[] intArray = new int[arraySize];
-        // populate array
-        for (int i = 0; i < arraySize; i++) {
-            intArray[i] = runningIntArray.get(i);
-        }
-
-        return intArray;
     }
 
     private class Node {
@@ -127,19 +115,11 @@ public class BinaryTreeSort implements Sortable {
         }
 
         private boolean isLeftChildEmpty(){
-            if (leftChild == null){
-                return true;
-            } else {
-                return false;
-            }
+            return leftChild == null;
         }
 
         private boolean isRightChildEmpty(){
-            if (rightChild == null){
-                return true;
-            } else {
-                return false;
-            }
+            return rightChild == null;
         }
     }
 }

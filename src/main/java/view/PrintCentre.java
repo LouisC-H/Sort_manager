@@ -18,8 +18,7 @@ public class PrintCentre {
                 "If you would like to compare more than one, please separate each choice with a comma \n" +
                 "1. Bubble Sort \n" +
                 "2. Merge Sort \n" +
-                "3. Binary Tree Sort \n" +
-                "[Press esc to quit at any time]";
+                "3. Binary Tree Sort";
     }
 
     public String wordsInChoice(){
@@ -36,7 +35,7 @@ public class PrintCentre {
     }
 
     public String invalidArrayLengthChoice(){
-        return "Sorry, I didn't get that, please try again. Input a single number between 1 and " + Integer.MAX_VALUE;
+        return "Sorry, I didn't get that, please try again. Input a single number between 1 and 5000";
     }
 
     public String invitePerformanceTest(){
@@ -57,7 +56,7 @@ public class PrintCentre {
         return sortingAlgorithm + ": " + Arrays.toString(intArray);
     }
 
-    public String returnTime(Integer timeTaken){
+    public String returnTime(Long timeTaken){
         return "Time taken: " + timeTaken.toString() + " ns";
     }
 

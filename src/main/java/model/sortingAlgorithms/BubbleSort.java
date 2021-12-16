@@ -7,13 +7,13 @@ import java.util.Arrays;
 
 public class BubbleSort implements Sortable {
 
-    private int beginSort;
-    private int endSort;
+    private long beginSort;
+    private long endSort;
 
     @Override
     public int[] returnSortedArray(int[] unsortedArray) {
 
-        this.beginSort = LocalDateTime.now().getNano();
+        this.beginSort = System.nanoTime();
 
         boolean isSorted = false;
         int arrayLength = unsortedArray.length;
@@ -34,12 +34,12 @@ public class BubbleSort implements Sortable {
                 }
             }
         }
-        this.endSort = LocalDateTime.now().getNano();
+        this.endSort = System.nanoTime();
         return unsortedArray;
     }
 
     @Override
-    public Integer returnTimeTaken() {
+    public long returnTimeTaken() {
         return this.endSort - this.beginSort;
     }
 

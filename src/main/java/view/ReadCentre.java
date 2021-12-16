@@ -72,7 +72,7 @@ public class ReadCentre {
     }
 
     private Integer checkLength(Integer userInput){
-        if (0 < userInput && userInput <= Integer.MAX_VALUE){
+        if (0 < userInput && userInput <= 5000){
             return userInput;
         } else {
             printCentre.pushToConsole(printCentre.invalidArrayLengthChoice());

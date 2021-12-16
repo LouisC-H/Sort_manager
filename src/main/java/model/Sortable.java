@@ -3,7 +3,7 @@ package model;
 public interface Sortable {
 
     int[] returnSortedArray(int[] unsortedArray);
-    Integer returnTimeTaken();
+    long returnTimeTaken();
     String getAlgorithmName();
 
 //    no idea if this would work??
