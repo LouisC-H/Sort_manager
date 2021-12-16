@@ -55,13 +55,17 @@ public class BinaryTreeSort implements Sortable {
         int[] runningIntArray = convertToIntArray(runningIntArrayList);
 
         this.endSort = LocalDateTime.now().getNano();
-
         return runningIntArray;
     }
 
     @Override
     public Integer returnTimeTaken() {
         return this.endSort - this.beginSort;
+    }
+
+    @Override
+    public String getAlgorithmName() {
+        return "BinaryTreeSort";
     }
 
     private ArrayList<Integer> recurseThroughArray(Node node, ArrayList<Integer> runningIntArray){

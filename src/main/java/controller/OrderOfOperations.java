@@ -2,6 +2,8 @@ package controller;
 
 import logging.MyLogger;
 import model.ArrayGenerator;
+import model.Sortable;
+import model.SortableFactory;
 import view.PrintCentre;
 import view.ReadCentre;
 import controller.DataCentre;
@@ -45,7 +47,22 @@ public class OrderOfOperations {
     }
 
     private void fireUpModel(){
+        // Generate random unsorted array
+        MyLogger.log(Level.FINE,"Generating unsorted array");
         dataCentre.setUnsortedArray(arrayGenerator.generateRandomArray(dataCentre.getArrayLength()));
+        dataCentre.initialiseSortedArrays(dataCentre.getNumberOfChosenAlgorithms(), dataCentre.getArrayLength());
+        // For each algorithm requested by the user...
+        MyLogger.log(Level.FINE,"Beginning to iterate over chosen sorting algorithms");
+        for (int i = 0; i < dataCentre.getNumberOfChosenAlgorithms(); i++) {
+            // ...instantiate a sorting algorithm object ...
+            Integer sortingAlgorithmNumber = dataCentre.getAlgorithmList().get(i);
+            Sortable sortingAlgorithm = SortableFactory.getSortingAlgorithm(sortingAlgorithmNumber);
+            // ... then use it to sort the array.
+            dataCentre.setSortedArraysRow(i, sortingAlgorithm.returnSortedArray(dataCentre.getUnsortedArray()));
+            dataCentre.addToTimeTaken(sortingAlgorithm.returnTimeTaken());
+            dataCentre.addToAlgorithmNames(sortingAlgorithm.getAlgorithmName());
+            MyLogger.log(Level.FINE,"Finished " + dataCentre.getSingleAlgorithmName(i));
+        }
     }
 
     private void coordinateModelReturnPhase(){
@@ -61,7 +78,7 @@ public class OrderOfOperations {
         -> Return to top of loop
         -> End output loop
          */
-        for (int i = 0; i < dataCentre.getAlgorithmList().size(); i++) {
+        for (int i = 0; i < dataCentre.getNumberOfChosenAlgorithms(); i++) {
             MyLogger.log(Level.FINE,"Showing array sorted using " + dataCentre.getSingleAlgorithmName(i));
             printCentre.pushToConsole(printCentre.returnSorted(dataCentre.getSingleAlgorithmName(i), dataCentre.getSortedArrayRow(i)));
             if (dataCentre.isQueryPerformance()){
