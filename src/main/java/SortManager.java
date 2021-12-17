@@ -4,7 +4,7 @@ import controller.OrderOfOperations;
  * Hello world!
  *
  */
-public class App 
+public class SortManager
 {
 
     /*
@@ -14,9 +14,9 @@ public class App
     repeating yourself, there's always an alternative solution to make things even more streamlined
     solution.
 
-    extensions:
-    use generics to ask them what number type they want to use
-    Graphing =)
+    Extensions ideas:
+    Allow the user to request non-int numbers within the arrays using generics.
+    Implement graphing to visualise how the relative efficiency of different algorithms changes with array length
      */
     public static void main( String[] args )
     {
