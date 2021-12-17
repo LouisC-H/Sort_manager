@@ -1,6 +1,7 @@
 package view;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -29,14 +30,16 @@ public class ReadCentreTests {
         Assertions.assertEquals(readCentre.spoofChooseAlgorithm("1,2,3,4", 5),numArray);
     }
 
-//    @Test
-//    @DisplayName("User inputs multi-digit negative number")
-//    void userInputsMultiDigitNegativeNumber() {
-//        ArrayList<Integer> numArray = new ArrayList<>();
-//        numArray.add(-239751);
-//        Assertions.assertEquals(readCentre.spoofChooseAlgorithm("-239751", 5),numArray);
-//    }
+    @Disabled
+    @Test
+    @DisplayName("User inputs multi-digit negative number")
+    void userInputsMultiDigitNegativeNumber() {
+        ArrayList<Integer> numArray = new ArrayList<>();
+        numArray.add(-239751);
+        Assertions.assertEquals(readCentre.spoofChooseAlgorithm("-239751", 5),numArray);
+    }
 
+//    @Disabled
 //    @Test
 //    @DisplayName("check single in-bounds user number")
 //    void checkSingleInBoundsUserNumber() {
@@ -45,6 +48,7 @@ public class ReadCentreTests {
 //        Assertions.assertEquals(numArray, readCentre.checkAlgorithmNumbers(numArray,1));
 //    }
 //
+//    @Disabled
 //    @Test
 //    @DisplayName("multiple in-bounds user numbers")
 //    void multipleInBoundsUserNumbers() {

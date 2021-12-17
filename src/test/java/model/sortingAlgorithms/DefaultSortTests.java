@@ -8,9 +8,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-public class MergeSortTests {
+public class DefaultSortTests {
 
-    private MergeSort mergesort = new MergeSort();
+    private DefaultSort defaultSort = new DefaultSort();
     private ArrayGenerator arrayGenerator = new ArrayGenerator();
 
     @Test
@@ -18,43 +18,44 @@ public class MergeSortTests {
     void doesTheSortingAlgorithmWork() {
         int[] exampleUnsortedArray = {5,-1,2,55,24893,-44};
         int[] exampleSortedArray = {-44, -1, 2, 5, 55, 24893};
-        Assertions.assertArrayEquals(exampleSortedArray, mergesort.returnSortedArray(exampleUnsortedArray));
+        Assertions.assertArrayEquals(exampleSortedArray, defaultSort.returnSortedArray(exampleUnsortedArray));
     }
 
     @Test
     @DisplayName("Does it work for an array of length 1?")
     void doesItWorkForAnArrayOfLength1() {
         int[] SingleValueArray= {42};
-        Assertions.assertArrayEquals(SingleValueArray, mergesort.returnSortedArray(SingleValueArray));
+        Assertions.assertArrayEquals(SingleValueArray, defaultSort.returnSortedArray(SingleValueArray));
+
     }
 
     @Disabled
     @ParameterizedTest
-    @ValueSource(ints = {1000, 10000, 100000, 1000000})
+    @ValueSource(ints = {1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000})
     @DisplayName("Probing max array size")
     void probingArrayMaxSize(int ints) {
-        mergesort.returnSortedArray(arrayGenerator.generateRandomArray(ints));
+        defaultSort.returnSortedArray(arrayGenerator.generateRandomArray(ints));
     }
 
     @Test
     @DisplayName("Does time taken return a long?")
     void doesTimeTakenReturnALong() {
         int[] exampleUnsortedArray = {5,-1,2,55,24893,-44};
-        mergesort.returnSortedArray(exampleUnsortedArray);
-        Assertions.assertInstanceOf(Long.class, mergesort.returnTimeTaken());
+        defaultSort.returnSortedArray(exampleUnsortedArray);
+        Assertions.assertInstanceOf(Long.class, defaultSort.returnTimeTaken());
     }
 
     @Test
     @DisplayName("Is time taken greater than or equal to 0?")
     void isTimeTakenGreaterThan0() {
         int[] exampleUnsortedArray = {5,-1,2,55,24893,-44};
-        mergesort.returnSortedArray(exampleUnsortedArray);
-        Assertions.assertTrue(mergesort.returnTimeTaken() >= 0);
+        defaultSort.returnSortedArray(exampleUnsortedArray);
+        Assertions.assertTrue(defaultSort.returnTimeTaken() >= 0);
     }
 
     @Test
     @DisplayName("Does it return a string for its name")
     void doesItReturnAStringForItsName() {
-        Assertions.assertInstanceOf(String.class, mergesort.getAlgorithmName());
+        Assertions.assertInstanceOf(String.class, defaultSort.getAlgorithmName());
     }
 }

@@ -1,19 +1,23 @@
 package model.sortingAlgorithms;
 
+import logging.MyLogger;
 import model.ArrayArrayListConversion;
 import model.Sortable;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.logging.Level;
 
 public class MergeSort implements Sortable {
+
     private long beginSort;
     private long endSort;
 
     @Override
     public int[] returnSortedArray(int[] unsortedArray) {
 
-        this.beginSort = LocalDateTime.now().getNano();
+        MyLogger.log(Level.FINE,"Beginning " + this.getAlgorithmName());
+        this.beginSort = System.nanoTime();
 
         ArrayList<Integer> runningIntArrayList =  ArrayArrayListConversion.intArrayToArrayList(unsortedArray);
 
@@ -21,7 +25,9 @@ public class MergeSort implements Sortable {
 
         int[] runningIntArray = ArrayArrayListConversion.intArrayListToArray(runningIntArrayList);
 
-        this.endSort = LocalDateTime.now().getNano();
+        this.endSort = System.nanoTime();
+        MyLogger.log(Level.FINE,"Ending " + this.getAlgorithmName() + ". Time taken: " + this.returnTimeTaken());
+
         return runningIntArray;
     }
 

@@ -1,9 +1,9 @@
 package model.sortingAlgorithms;
 
+import logging.MyLogger;
 import model.Sortable;
 
-import java.time.LocalDateTime;
-import java.util.Arrays;
+import java.util.logging.Level;
 
 public class BubbleSort implements Sortable {
 
@@ -13,6 +13,7 @@ public class BubbleSort implements Sortable {
     @Override
     public int[] returnSortedArray(int[] unsortedArray) {
 
+        MyLogger.log(Level.FINE,"Beginning " + this.getAlgorithmName());
         this.beginSort = System.nanoTime();
 
         boolean isSorted = false;
@@ -34,7 +35,9 @@ public class BubbleSort implements Sortable {
                 }
             }
         }
+
         this.endSort = System.nanoTime();
+        MyLogger.log(Level.FINE,"Ending " + this.getAlgorithmName() + ". Time taken: " + this.returnTimeTaken());
         return unsortedArray;
     }
 

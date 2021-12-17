@@ -1,12 +1,17 @@
 package model.sortingAlgorithms;
 
+import model.ArrayGenerator;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class BubbleSortTests {
 
     private BubbleSort bubbleSort = new BubbleSort();
+    private ArrayGenerator arrayGenerator = new ArrayGenerator();
 
     @Test
     @DisplayName("Does the sorting algorithm work?")
@@ -24,12 +29,20 @@ public class BubbleSortTests {
 
     }
 
+    @Disabled
+    @ParameterizedTest
+    @ValueSource(ints = {1000, 10000, 100000, 200000, 500000, 1000000})
+    @DisplayName("Probing max array size")
+    void probingArrayMaxSize(int ints) {
+        bubbleSort.returnSortedArray(arrayGenerator.generateRandomArray(ints));
+    }
+
     @Test
-    @DisplayName("Does time taken return an int?")
-    void doesTimeTakenReturnAnInt() {
+    @DisplayName("Does time taken return a long?")
+    void doesTimeTakenReturnALong() {
         int[] exampleUnsortedArray = {5,-1,2,55,24893,-44};
         bubbleSort.returnSortedArray(exampleUnsortedArray);
-        Assertions.assertInstanceOf(Integer.class, bubbleSort.returnTimeTaken());
+        Assertions.assertInstanceOf(Long.class, bubbleSort.returnTimeTaken());
     }
 
     @Test

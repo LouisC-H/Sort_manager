@@ -7,6 +7,9 @@ import java.util.Arrays;
 import java.util.logging.Level;
 
 public class PrintCentre {
+    /*
+    Manages all printing to the command line
+     */
 
     // only exists to allow other functions to be tested
     public void pushToConsole(String toPrint){
