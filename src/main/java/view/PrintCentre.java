@@ -28,7 +28,7 @@ public class PrintCentre {
     }
 
     public String invalidAlgorithmChoice(Integer numAlgorithms){
-        return "Sorry, I didn't get that, please try again. Input only number between 1 and " + numAlgorithms.toString();
+        return "Sorry, I didn't get that, please try again. Type a number between 1 and " + numAlgorithms.toString();
     }
 
     public String inviteArrayLengthChoice(){
@@ -37,7 +37,7 @@ public class PrintCentre {
     }
 
     public String invalidArrayLengthChoice(){
-        return "Sorry, I didn't get that, please try again. Input a single number between 1 and 5000";
+        return "Sorry, I didn't get that, please try again. Type a single number between 1 and 5000";
     }
 
     public String invitePerformanceTest(){
@@ -46,7 +46,7 @@ public class PrintCentre {
     }
 
     public String invalidYesNo(){
-        return "Sorry, I didn't get that, please try again. Input Y (yes) or N (no)";
+        return "Sorry, I didn't get that, please try again. Type Y (yes) or N (no)";
     }
 
     // output loop printing

@@ -90,7 +90,7 @@ public class PrintCentreTests {
     @Test
     @DisplayName("Inserting custom maximum integers in invalidAlgorithmChoice")
     void insertingCustomMaximumIntegersInInvalidAlgorithmChoice() {
-        String expectedString = "Sorry, I didn't get that, please try again. Input a number between 1 and 5";
+        String expectedString = "Sorry, I didn't get that, please try again. Type a number between 1 and 5";
         Assertions.assertEquals(printCentre.invalidAlgorithmChoice(5), expectedString);
     }
 
