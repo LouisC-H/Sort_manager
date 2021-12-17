@@ -8,6 +8,9 @@ import java.util.Scanner;
 import java.util.logging.Level;
 
 public class ReadCentre {
+    /*
+    Manages all reading from the command line
+     */
     Scanner scan = new Scanner(System.in);
     PrintCentre printCentre = new PrintCentre();
 
@@ -72,7 +75,7 @@ public class ReadCentre {
     }
 
     private Integer checkLength(Integer userInput){
-        if (0 < userInput && userInput <= 5000){
+        if (0 < userInput && userInput <= 300000){ // at much higher than 5000, the BinaryTreeSort started throwing up stack overflow errors
             return userInput;
         } else {
             printCentre.pushToConsole(printCentre.invalidArrayLengthChoice());
@@ -100,6 +103,7 @@ public class ReadCentre {
         return yesOrNo;
     }
 
+    //only used for testing
     public ArrayList<Integer> spoofChooseAlgorithm(String spoofUserInput, Integer numAlgorithms){
 
         ArrayList<Integer> numArray = new ArrayList<>();
@@ -120,10 +124,4 @@ public class ReadCentre {
         return numArray;
     }
 
-//    public static void main(String[] args) {
-//        ReadCentre readCentre = new ReadCentre();
-////        System.out.println(readCentre.chooseAlgorithm(3).toString());
-//        System.out.println(readCentre.chooseLength());
-////        System.out.println(readCentre.queryPerformance());
-//    }
 }

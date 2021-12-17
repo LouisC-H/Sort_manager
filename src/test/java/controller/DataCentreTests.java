@@ -1,5 +1,6 @@
 package controller;
 
+import model.SortableAlgorithmHub;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -18,7 +19,7 @@ public class DataCentreTests {
         @Test
         @DisplayName("Getter return type - numberOfImplementedAlgorithms")
         void getterReturnTypeNumberOfImplementedAlgorithms() {
-            Assertions.assertInstanceOf(Integer.class, dataCentre.getNumberOfImplementedAlgorithms());
+            Assertions.assertInstanceOf(Integer.class, dataCentre.getNumberOfAlgorithms());
         }
 
         @Test
@@ -63,7 +64,7 @@ public class DataCentreTests {
         @DisplayName("Getter return type - timeTaken")
         void getterReturnTypeTimeTaken() {
             dataCentre.addToTimeTaken(9873);
-            Assertions.assertInstanceOf(Integer.class, dataCentre.getSingleTimeTaken(0));
+            Assertions.assertInstanceOf(Long.class, dataCentre.getSingleTimeTaken(0));
         }
 
         @Test
@@ -80,7 +81,8 @@ public class DataCentreTests {
         @Test
         @DisplayName("Getter return value - numberOfImplementedAlgorithms")
         void getterReturnTypeNumberOfImplementedAlgorithms() {
-            Assertions.assertEquals(3, dataCentre.getNumberOfImplementedAlgorithms());
+            int numAlgorithms = SortableAlgorithmHub.numberOfSortAlgorithms;
+            Assertions.assertEquals(numAlgorithms, dataCentre.getNumberOfAlgorithms());
         }
 
         @Test
@@ -126,9 +128,9 @@ public class DataCentreTests {
         @Test
         @DisplayName("Getter return value - timeTaken")
         void getterReturnTypeTimeTaken() {
-            Integer integer = 9873;
-            dataCentre.addToTimeTaken(integer);
-            Assertions.assertEquals(integer, dataCentre.getSingleTimeTaken(0));
+            Long time = 9873L;
+            dataCentre.addToTimeTaken(time);
+            Assertions.assertEquals(time, dataCentre.getSingleTimeTaken(0));
         }
 
         @Test

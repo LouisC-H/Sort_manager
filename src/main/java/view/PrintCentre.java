@@ -1,11 +1,15 @@
 package view;
 
 import logging.MyLogger;
+import model.SortableAlgorithmHub;
 
 import java.util.Arrays;
 import java.util.logging.Level;
 
 public class PrintCentre {
+    /*
+    Manages all printing to the command line
+     */
 
     // only exists to allow other functions to be tested
     public void pushToConsole(String toPrint){
@@ -15,10 +19,8 @@ public class PrintCentre {
 
     public String inviteAlgorithmChoice(){
         return "Which algorithm would you like to use? \n" +
-                "If you would like to compare more than one, please separate each choice with a comma \n" +
-                "1. Bubble Sort \n" +
-                "2. Merge Sort \n" +
-                "3. Binary Tree Sort";
+                "If you would like to compare more than one, please separate each choice with a comma \n"
+                + SortableAlgorithmHub.namesOfSortAlgorithms;
     }
 
     public String wordsInChoice(){

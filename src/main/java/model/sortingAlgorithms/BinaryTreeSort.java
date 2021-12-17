@@ -1,12 +1,14 @@
 package model.sortingAlgorithms;
 
+import logging.MyLogger;
 import model.ArrayArrayListConversion;
 import model.Sortable;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.logging.Level;
 
 public class BinaryTreeSort implements Sortable {
+
     private Node rootNode;
     private long beginSort;
     private long endSort;
@@ -46,8 +48,10 @@ public class BinaryTreeSort implements Sortable {
     @Override
     public int[] returnSortedArray(int[] unsortedArray) {
 
+        MyLogger.log(Level.FINE,"Beginning " + this.getAlgorithmName());
         this.beginSort = System.nanoTime();
         this.constructTree(unsortedArray);
+        MyLogger.log(Level.FINE,"Binary tree has been constructed, containing this many nodes: " + unsortedArray.length);
 
         ArrayList<Integer> runningIntArrayList =  new ArrayList<>();
         runningIntArrayList = recurseThroughArray(rootNode, runningIntArrayList);
@@ -55,6 +59,8 @@ public class BinaryTreeSort implements Sortable {
         int[] runningIntArray = ArrayArrayListConversion.intArrayListToArray(runningIntArrayList);
 
         this.endSort = System.nanoTime();
+        MyLogger.log(Level.FINE,"Ending " + this.getAlgorithmName() + ". Time taken: " + this.returnTimeTaken());
+
         return runningIntArray;
     }
 
@@ -69,6 +75,7 @@ public class BinaryTreeSort implements Sortable {
     }
 
     private ArrayList<Integer> recurseThroughArray(Node node, ArrayList<Integer> runningIntArray){
+//        MyLogger.log(Level.FINEST,"Node of value " + node.value);
 
         if(!node.isLeftChildEmpty()){
             //If there is a node to the left, step into it

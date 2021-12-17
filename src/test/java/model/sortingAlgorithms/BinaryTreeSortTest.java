@@ -1,13 +1,14 @@
 package model.sortingAlgorithms;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import model.ArrayGenerator;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class BinaryTreeSortTest {
 
     private BinaryTreeSort binaryTreeSort;
+    private ArrayGenerator arrayGenerator = new ArrayGenerator();
 
     @BeforeEach
     void setup(){
@@ -30,12 +31,20 @@ public class BinaryTreeSortTest {
 
     }
 
+    @Disabled
+    @ParameterizedTest
+    @ValueSource(ints = {1000, 10000, 100000, 1000000, 10000000})
+    @DisplayName("Probing max array size")
+    void probingArrayMaxSize(int ints) {
+        binaryTreeSort.returnSortedArray(arrayGenerator.generateRandomArray(ints));
+    }
+
     @Test
-    @DisplayName("Does time taken return an int?")
-    void doesTimeTakenReturnAnInt() {
+    @DisplayName("Does time taken return a long?")
+    void doesTimeTakenReturnALong() {
         int[] exampleUnsortedArray = {5,-1,2,55,24893,-44};
         binaryTreeSort.returnSortedArray(exampleUnsortedArray);
-        Assertions.assertInstanceOf(Integer.class, binaryTreeSort.returnTimeTaken());
+        Assertions.assertInstanceOf(Long.class, binaryTreeSort.returnTimeTaken());
     }
 
     @Test

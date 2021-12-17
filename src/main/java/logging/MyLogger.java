@@ -10,13 +10,20 @@ public class MyLogger {
         logger.setLevel(Level.ALL);
         logger.setUseParentHandlers(false);
         try {
-            Handler fileHandler = new FileHandler("src/main/java/logging/myLog.log", true);
-            fileHandler.setLevel(Level.FINEST);
-            fileHandler.setFormatter(new CustomFormatter());
-            logger.addHandler(fileHandler);
+            //One file handles the noteworthy logs
+            Handler simpleHandler = new FileHandler("src/main/java/logging/mainLog.log", true);
+            simpleHandler.setLevel(Level.CONFIG);
+            simpleHandler.setFormatter(new CustomFormatter());
+            logger.addHandler(simpleHandler);
+            //One file handles all logs
+            Handler detailedHandler = new FileHandler("src/main/java/logging/detailedLog.log", true);
+            detailedHandler.setLevel(Level.FINEST);
+            detailedHandler.setFormatter(new CustomFormatter());
+            logger.addHandler(detailedHandler);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        //As this application asks the user to interact with it through the console, only SEVERE logs are passed along to it.
         Handler consoleHandler = new ConsoleHandler();
         consoleHandler.setLevel(Level.SEVERE);
         logger.addHandler(consoleHandler);
