@@ -1,4 +1,4 @@
-#Sort Manager
+# Sort Manager
 
 This project was created for the week 3 project as part of Sparta Global's java engineering course.
 It is designed to allow users to compare and contrast different sorting algorithms.
